@@ -3,7 +3,6 @@
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #FFD700, #FFA500);
-    /* Stryker company gold gradient */
     margin: 0;
     padding: 20px;
 }
@@ -17,6 +16,7 @@ body {
 h3 {
     text-align: center;
     color: #000000;
+    display: block;
     /* Black text for headers */
 }
 
@@ -26,7 +26,7 @@ h3 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 15px;
     width: 75%;
-    height: 200px;
+    height: 300px;
     position: relative;
 }
 
@@ -117,5 +117,19 @@ code {
 }
 
 .hide {
-    visibility: hidden;
+    display: none
+}
+
+.stop-response-spoken {
+    width: auto;
+    border: none;
+    background-color: #ff4000;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
 }

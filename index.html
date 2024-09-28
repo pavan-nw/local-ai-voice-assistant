@@ -1,34 +1,48 @@
 <html>
+
 <head>
   <title>Speech to text</title>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="./js/main.js"></script>
   <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
-  <h3>Text to Speech conversion using the Web speech API</h3>
-  <div class="container">
-    <div class="text-to-speech-section">
-      <textarea name="text" id="text" placeholder="Add text to Speak."></textarea>
-      Select Voice: <select id="voiceSelect" style="margin-bottom: 10px; width: 20%;"></select>
-      <button onclick="stopSpeaking()" class="stop-btn">Stop</button>
-      <button onclick="startSpeaking()" class="start-btn" style="margin-top: 10px;">Start</button>
+  <h3>AI Based Voice Assitant - Uses Local LLMs</h3>
+  <div id="text-to-speech" class="hide">
+    <div class="container">
+      <div class="text-to-speech-section">
+        <h3>Text to Speech conversion using the Web speech API</h3>
+        <textarea name="text" id="text" placeholder="Add text to Speak."></textarea>
+        Select Voice: <select id="voiceSelect" style="margin-bottom: 10px; width: 20%;"></select>
+        <button onclick="stopSpeaking()" class="stop-btn">Stop</button>
+        <button onclick="startSpeaking()" class="start-btn" style="margin-top: 10px;">Start</button>
+      </div>
     </div>
   </div>
 
-  <h3>Speech to Text conversion using the Web speech API</h3>
-  <div class="container">
-    <div class="speech-to-text-section">
-      <button onclick="startRecognition()" class="start-record-btn">
-        Start Record
-      </button>
-      <button onclick="stopRecognition()" class="stop-record-btn">
-        Stop Record
-      </button>
-      <p id="action"></p>
-      <h3 id="output"></h3>
-      <div id="code-block" class="hide"><pre><code id="ai-response"></code></pre></div>
+  <div id="speech-to-text">
+    <div class="container">
+      <div class="speech-to-text-section">
+        <h3>Speech to Text conversion using the Web speech API</h3>
+        <button onclick="startRecognition()" id="start-record-btn" class="start-record-btn">
+          Start Record
+        </button>
+        <button onclick="stopRecognition()" id="stop-record-btn" class="stop-record-btn hide">
+          Stop Record
+        </button>
+        <p id="action"></p>
+        <div>
+          <h3 id="output"></h3>
+          <p id="loading-response" style="text-align:center; font-weight: bold;" class="hide">Generating response...</span>
+          <div id="code-block" class="hide">
+            <pre><code id="ai-response"></code></pre>
+          </div>
+        </div>
+        <button id="stop-speaking-response" onclick="stopSpeaking()" class="stop-response-spoken hide">Stop</button>
+      </div>
     </div>
   </div>
 </body>
+
 </html>

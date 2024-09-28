@@ -92,6 +92,7 @@ let finalTranscript = "";
 
 // Function to start recognition
 function startRecognition() {
+  toggleRecordBtns();
   finalTranscript = "";
   initSpeechRecognition();
   if (recognition) recognition.start();
@@ -99,7 +100,13 @@ function startRecognition() {
 
 // Function to stop recognition
 function stopRecognition() {
+  toggleRecordBtns();
   if (recognition) recognition.stop();
+}
+
+function toggleRecordBtns() {
+  document.getElementById("start-record-btn").classList.toggle("hide");
+  document.getElementById("stop-record-btn").classList.toggle("hide");
 }
 
 initSpeechRecognition = () => {
@@ -156,6 +163,7 @@ const reqBody = (content) => {
 
 
 function sendToAIModel(content) {
+  document.getElementById("loading-response").classList.remove("hide");
   fetch('http://localhost:1234/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -171,13 +179,14 @@ function sendToAIModel(content) {
     })
     .then(data => {
       console.log('Success:', data);
-
+      document.getElementById("loading-response").classList.add("hide");
       if (data.model.includes(model2)) {
         const aiResponse = document.getElementById("ai-response");
         const codeBlock = document.getElementById("code-block");
         codeBlock.classList.remove("hide");
         aiResponse.innerHTML = window.marked.marked(data.choices[0].message.content);
       } else {
+        document.getElementById("stop-speaking-response").classList.remove("hide");
         speakText(data.choices[0].message.content);
       }
     })
