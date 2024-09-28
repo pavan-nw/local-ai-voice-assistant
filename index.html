@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>Speech to text</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="./js/main.js"></script>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <h3>Text to Speech conversion using the Web speech API</h3>
+  <div class="container">
+    <div class="text-to-speech-section">
+      <textarea name="text" id="text" placeholder="Add text to Speak."></textarea>
+      Select Voice: <select id="voiceSelect" style="margin-bottom: 10px; width: 20%;"></select>
+      <button onclick="stopSpeaking()" class="stop-btn">Stop</button>
+      <button onclick="startSpeaking()" class="start-btn" style="margin-top: 10px;">Start</button>
+    </div>
+  </div>
+
+  <h3>Speech to Text conversion using the Web speech API</h3>
+  <div class="container">
+    <div class="speech-to-text-section">
+      <button onclick="startRecognition()" class="start-record-btn">
+        Start Record
+      </button>
+      <button onclick="stopRecognition()" class="stop-record-btn">
+        Stop Record
+      </button>
+      <p id="action"></p>
+      <h3 id="output"></h3>
+      <div id="code-block" class="hide"><pre><code id="ai-response"></code></pre></div>
+    </div>
+  </div>
+</body>
+</html>
